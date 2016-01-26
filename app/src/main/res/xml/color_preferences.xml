@@ -8,11 +8,21 @@
         <com.raffaeu.colorpickerlib.ColorPickerPreference
             android:icon="@drawable/ic_format_color_fill_black_24dp"
             android:defaultValue="@android:color/white"
-            android:key="calendar_colorkey"
+            android:key="accent.key"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:summary="Change Primary Color"
             android:title="Primary Color"
+            app:cal_itemLayout="@layout/calendar_grid_item_color"
+            app:cal_numColumns="5"/>
+        <com.raffaeu.colorpickerlib.ColorPickerPreference
+            android:icon="@drawable/ic_format_color_fill_black_24dp"
+            android:defaultValue="@android:color/white"
+            android:key="accent.dark.key"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="Change Primary Dark Color"
+            android:title="Primary Dark Color"
             app:cal_itemLayout="@layout/calendar_grid_item_color"
             app:cal_numColumns="5"/>
     </PreferenceCategory>

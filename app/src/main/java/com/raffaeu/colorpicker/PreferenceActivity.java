@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class PreferenceActivity
         extends android.preference.PreferenceActivity
@@ -50,6 +52,13 @@ public class PreferenceActivity
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        toolbar.setBackgroundColor(sharedPreferences.getInt(key, 0));
+        if(key.equals("accent.key")){
+            toolbar.setBackgroundColor(sharedPreferences.getInt(key, 0));
+        }else{
+            Window window = this.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(sharedPreferences.getInt(key, 0));
+        }
     }
 }

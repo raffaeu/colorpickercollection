@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.raffaeu.colorpickerlib'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -22,4 +27,48 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+}
+
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavadocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavadocsJar
+    archives generateSourcesJar
+}
+
+bintray {
+    user = 'raffaeu'
+    key = '905538a889438dee94aeca0cf3605ffe8c17aff3'
+    pkg {
+        repo = 'maven'
+        name = 'ColorPicker'
+
+        version {
+            name = 'colorpickerlib' // the name of your library project
+            desc = 'This is the first version'
+            released  = new Date()
+            vcsTag = '1.0.0' // the version
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/raffaeu/colorpickercollection.git'
+        websiteUrl = 'https://github.com/raffaeu/colorpickercollection'
+    }
+    configurations = ['archives']
 }
