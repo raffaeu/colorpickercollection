@@ -103,11 +103,14 @@ public class ColorPickerPalette extends TableLayout {
      * to the beginning of a row for odd-numbered rows.
      */
     private void addSwatchToRow(TableRow row, View swatch, int rowNumber) {
+        row.addView(swatch);
+        /*
         if (rowNumber % 2 == 0) {
             row.addView(swatch);
         } else {
             row.addView(swatch, 0);
         }
+        */
     }
 
     /**

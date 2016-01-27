@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\DROID\colorpickercollection\app\build\intermediates\exploded-aar\com.raffaeu.colorpickerlib\colorpickerlib\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0f9b0c2818b9001a7d94ed0c48ca5f475d1cced7">
+        <dex dex="C:\DROID\colorpickercollection\app\build\intermediates\pre-dexed\debug\com.raffaeu.colorpickerlib-colorpickerlib-1.0.0_f647b1c88d40f2fdf6dc601c62af761b38d0f3f5.jar" />
+    </item>
+
+</items>
